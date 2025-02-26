@@ -1,6 +1,7 @@
 // API Call to fetch all information relating to all movies - using a caching statement to 
 // avoid repeated apicalls
 
+
 let savedMovies:any = null;
 
 const fetchMovies = async () =>{
@@ -26,7 +27,7 @@ const fetchMovies = async () =>{
 }
 
 
-const getMovieDetails = async (i:any) =>{
+export const getMovieDetails = async (i:any) =>{
     try{
     const movies = await fetchMovies();
     if(movies[i]){
@@ -46,17 +47,10 @@ const getMovieDetails = async (i:any) =>{
     }
 };
 
-// fetchMovies();
 
-// Function - post to an api to create a movie based off all 
-// information provided by the user 
-// Username 
-// Title, 
-// Genre, 
-// Release Year 
-// Rating
 
-const addMovie = async (movieDetails: {
+
+export const addMovie = async (movieDetails: {
     title: string, 
     genre: string, 
     releaseYear: string, 
@@ -70,7 +64,7 @@ const addMovie = async (movieDetails: {
                 headers:{
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({movieDetails}),
+                body: JSON.stringify(movieDetails),
             });
             if(!response.ok){
                 throw new Error("Failure to create movie");
@@ -81,3 +75,6 @@ const addMovie = async (movieDetails: {
         console.error("There has been an error",error)
 }
 } 
+
+
+// addMovie(testMovie);

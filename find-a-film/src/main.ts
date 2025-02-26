@@ -35,4 +35,4 @@ const testMovie = {
 
 addMovie(testMovie);
 
-getMovieDetails(0);
+// getMovieDetails(0);
