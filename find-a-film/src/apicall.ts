@@ -26,7 +26,7 @@ const fetchMovies = async () =>{
     }
 }
 
-
+// get movie details of 1 movie
 export const getMovieDetails = async (i:any) =>{
     try{
     const movies = await fetchMovies();
@@ -47,9 +47,22 @@ export const getMovieDetails = async (i:any) =>{
     }
 };
 
+// get details of a random movie
+export const getRandomMovie = async () =>{
+    try{
+        const movies = await fetchMovies();
+        const randomIndex = Math.floor(Math.random()*movies.length)
+        getMovieDetails(randomIndex);
+    } catch(error){
+        console.error("There has been an error", error);
+    }
+}
 
 
 
+
+
+// Add a new movie
 export const addMovie = async (movieDetails: {
     title: string, 
     genre: string, 
@@ -77,4 +90,27 @@ export const addMovie = async (movieDetails: {
 } 
 
 
-// addMovie(testMovie);
+// Add user 
+
+export const addUser = async (userDetails: {
+    firstName: string, 
+    lastName: string, 
+    email: string, }) =>{
+        try{
+            const response = await fetch ("http://localhost:8080/users", {
+                method: "POST",
+                headers:{
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(userDetails),
+            });
+            if(!response.ok){
+                throw new Error("Failure to create user");
+            }
+            console.log("User created successfully");
+        } 
+        catch (error){
+        console.error("There has been an error",error)
+}
+} 
+

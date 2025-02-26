@@ -33,6 +33,6 @@ const testMovie = {
   "description": "A skilled thief, who specializes in stealing secrets from deep within the subconscious, is offered a chance to have his past crimes forgiven if he can successfully plant an idea into someone's mind."
 };
 
-addMovie(testMovie);
+// addMovie(testMovie);
 
 // getMovieDetails(0);
