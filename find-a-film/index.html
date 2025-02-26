@@ -1,13 +1,37 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie App</title>
+</head>
+
+<body>
+  <div class="app-container">
+    <h1>Movie App</h1>
+
+    <div class="header">
+      <input class="search" type="text" placeholder="Search for a movie">
+      <label for="Filter">Filter by:</label>
+      <select name="Filter" class="filter-by">
+        <option value=""></option>
+        <option value="Genre">Genre</option>
+        <option value="Year">Release Year</option>
+      </select>
+      <input class="filter-input" type="text">
+      <button type="button">Search</button>
+    </div>
+
+    <div class="content"></div>
+
+    <div class="footer"></div>
+
+  </div>
+
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
