@@ -1,5 +1,5 @@
 import './style.css';
-import {getMovieDetails, addMovie} from "./apicall";
+import { getMovieDetails, addMovie } from "./apicall";
 
 
 // Function that does an api call to display all movies
@@ -26,7 +26,7 @@ import {getMovieDetails, addMovie} from "./apicall";
 const testMovie = {
   "title": "Inception",
   "genre": "Sci-Fi",
-  "releaseYear":"2010",
+  "releaseYear": "2010",
   "rating": "8",
   "uploadedBy": "Karl",
   "imageURL": "https://www.google.com",
@@ -36,3 +36,4 @@ const testMovie = {
 // addMovie(testMovie);
 
 // getMovieDetails(0);
+import './style.css'
