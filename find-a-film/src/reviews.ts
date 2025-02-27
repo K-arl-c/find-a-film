@@ -7,6 +7,7 @@ const filmImage = document.querySelector<HTMLImageElement>(".film-image");
 const filmGenre = document.querySelector<HTMLSpanElement>(".film-genre");
 const filmRelease = document.querySelector<HTMLSpanElement>(".release-year");
 const filmDescription = document.querySelector<HTMLParagraphElement>(".film-description");
+const allReviews = document.querySelector<HTMLDivElement>(".all-reviews");
 const urlParam = new URLSearchParams(window.location.search);
 const movieId = urlParam.get("id");
 
@@ -70,12 +71,32 @@ export const addReview = async (userDetails: {
 }
 } 
 
+// show all reviews
+const showAllReviews = async () =>{
+    try{
+        const currentMovie = await fetchCurrentMovie();
+        const reviews = currentMovie.reviews;
+        reviews.forEach((review:any) => {
+            const reviewDiv = document.createElement("div");
+            reviewDiv.classList.add("previous-reviews-container")
+            reviewDiv.innerHTML = `
+            <div class="review-header">
+                <span class="reviewed-by">Reviewed by: ${review.addedBy}</span>
+                <span class"user-rating">Rating: IN PROGRESS</span>
+            </div>
+            <div class="user-review">
+                ${review.review}
+            </div>
+            `;
+            allReviews!.appendChild(reviewDiv);
+        });
+    } catch (error){
+        console.error("There has been an error showing reviews ",error)
+    }
+}
 
 
-
-
-
-
+showAllReviews();
 
 
 
