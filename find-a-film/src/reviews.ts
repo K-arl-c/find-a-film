@@ -2,6 +2,11 @@ const reviewerName = document.querySelector<HTMLInputElement>("#userName");
 const reviewDescription = document.querySelector<HTMLInputElement>("#review");
 const reviewRating = document.querySelector<HTMLSelectElement>("#rating");
 const submitButton = document.querySelector<HTMLButtonElement>("#submit-button");
+const filmTitle = document.querySelector<HTMLSpanElement>(".film-title");
+const filmImage = document.querySelector<HTMLImageElement>(".film-image");
+const filmGenre = document.querySelector<HTMLSpanElement>(".film-genre");
+const filmRelease = document.querySelector<HTMLSpanElement>(".release-year");
+const filmDescription = document.querySelector<HTMLParagraphElement>(".film-description");
 const urlParam = new URLSearchParams(window.location.search);
 const movieId = urlParam.get("id");
 
@@ -25,6 +30,11 @@ const fetchCurrentMovie = async () =>{
 const getCurrentMovieDetails = async () =>{
     try{
         const currentMovie = await fetchCurrentMovie();
+        filmTitle!.innerText = currentMovie.title;
+        filmImage?.setAttribute("src",`${currentMovie.imageURL}`);
+        filmGenre!.innerText = currentMovie.genre;
+        filmRelease!.innerText = currentMovie.releaseYear;
+        filmDescription!.innerText = currentMovie.description;
         console.log(currentMovie);
     } catch (error){
         console.error("Error retreiving current film ",  error)
