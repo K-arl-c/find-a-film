@@ -1,5 +1,6 @@
 import './style.css';
-import { getMovieDetails, addMovie } from "./apicall";
+import { getMovieDetails, addMovie, showAllMovies } from "./apicall";
+
 
 
 // Function that does an api call to display all movies
@@ -36,4 +37,5 @@ const testMovie = {
 // addMovie(testMovie);
 
 // getMovieDetails(0);
-import './style.css'
+
+showAllMovies();

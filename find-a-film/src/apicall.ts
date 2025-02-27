@@ -1,6 +1,8 @@
 // API Call to fetch all information relating to all movies - using a caching statement to 
 // avoid repeated apicalls
 
+// Query Selectors
+const allMovieContainer = document.querySelector<HTMLDivElement>(".content");
 
 let savedMovies:any = null;
 
@@ -12,7 +14,7 @@ const fetchMovies = async () =>{
     }
 
     try{
-    const response = await fetch ("http://localhost:8080/movies/add");
+    const response = await fetch ("http://localhost:8080/movies");
     if(!response.ok){
         throw new Error("Could not fetch API :(");
     }
@@ -63,11 +65,24 @@ export const getRandomMovie = async () =>{
 export const showAllMovies = async () => {
     try{
         const movies = await fetchMovies();
-        movies.forEach((movie:any) => getMovieDetails(movie))
+        movies.forEach((movie:any) => {
+            const movieDiv = document.createElement("div");
+            movieDiv.classList.add("movie-container");
+            movieDiv.innerHTML = `
+            <div class="movie-title">${movie.title}</div>
+            <img class="movie-image"
+          src="${movie.imageURL}"
+          alt="elf movie poster" width="50%" height="100%"/>
+          <div>Genre: ${movie.genre}</div>
+          <div>Release Year: ${movie.releaseYear}</div>
+          <div>Rating:</div>
+          
+            `;
+            allMovieContainer!.appendChild(movieDiv);
+        });
     } catch (error){
         console.error("Error retrieving all movies" ,error);
     }
-    
 };
 
 
@@ -83,7 +98,8 @@ export const addMovie = async (movieDetails: {
     rating: string,
     uploadedBy: string,
     imageURL: string,
-    description: string }) =>{
+    description: string,
+    addedBy: string }) =>{
         try{
             const response = await fetch ("http://localhost:8080/movies", {
                 method: "POST",
