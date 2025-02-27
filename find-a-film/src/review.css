@@ -1,6 +1,12 @@
-.movie-container.review-container {
+.review-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.movie-container.review-content-container {
     box-sizing: border-box;
-    width: 100%;
+    width: 60%;
     padding: 20px;
 }
 
@@ -14,13 +20,10 @@
     flex-direction: column;
     gap: 15px;
     width: 80%;
-    /* Ensures this container is the same width as the movie container */
     max-width: 1200px;
     margin: 0 auto;
-    /* Centers the container horizontally */
 }
 
-/* Input and textarea styling */
 .new-review-container input,
 .new-review-container textarea,
 .new-review-container select {
@@ -34,21 +37,6 @@
     margin-bottom: 10px;
 }
 
-button {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #1a1a1a;
-    cursor: pointer;
-}
-
-button:hover {
-    border-color: #646cff;
-}
-
 .new-review-container button {
     width: 100%;
     margin-top: 10px;
@@ -60,7 +48,7 @@ button:hover {
     background-color: #333333;
     padding: 15px;
     border-radius: 12px;
-    border-color: #646cff;
+    border-color: rgba(100, 108, 255, 1);
     border-style: double;
 }
 
