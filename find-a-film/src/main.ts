@@ -1,4 +1,5 @@
 import './style.css';
+import './review.css';
 import { getMovieDetails, addMovie } from "./apicall";
 
 
