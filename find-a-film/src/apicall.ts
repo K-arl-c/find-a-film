@@ -5,7 +5,6 @@
 const allMovieContainer = document.querySelector<HTMLDivElement>(".content");
 const genreDropdown = document.querySelector<HTMLSelectElement>(".filter-by");
 const movieSearch = document.querySelector<HTMLInputElement>(".search");
-const randomButton = document.querySelector<HTMLButtonElement>("#randomButton");
 let savedMovies:any = null;
 
 const fetchMovies = async () =>{

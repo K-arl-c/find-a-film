@@ -8,6 +8,8 @@
     <title>Movie App</title>
     <link rel="stylesheet" href="./src/addMovie.css">
     <link rel="stylesheet" href="./src/style.css">
+    <script type="module" src="./src/addMovie.ts"></script>
+
 </head>
 
 <body>
@@ -18,24 +20,25 @@
         </div>
         <form class="movie-container add-movie-form">
             <label for="title">Title:</label>
-            <input type="text" name="title"><br>
+            <input type="text" name="title" id="title"><br>
 
             <label for="genre">Genre:</label>
-            <input type="text" name="genre"><br>
+            <input type="text" name="genre" id="genre"><br>
 
             <label for="description">Description:</label>
-            <input type="text" name="description"><br>
+            <input type="text" name="description" id="description"><br>
 
             <label for="release-year">Release Year:</label>
-            <input type="text" name="elease-year"><br>
+            <input type="text" name="release-year" id="release"><br>
 
             <label for="image-url">Image URL:</label>
-            <input type="text" name="image-url"><br>
+            <input type="text" name="image-url" id="image"><br>
 
             <label for="added-by">Added By:</label>
-            <input type="text" name="added-by"><br>
+            <input type="text" name="added-by" id="user"><br>
 
-            <input class="add-movie-submit-button" type="submit" value="Submit">
         </form>
+        <button class="add-movie-submit-button" value="Submit">CLICK</button>
+
     </div>
 </body>
