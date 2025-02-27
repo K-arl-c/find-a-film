@@ -21,7 +21,8 @@ body {
   min-height: 100vh;
 }
 
-button {
+button,
+input[type="submit"] {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -31,15 +32,16 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
-}
 
-button:hover {
-  border-color: #646cff;
-}
 
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  &:hover {
+    border-color: #646cff;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 4px auto;
+  }
 }
 
 .app-container {
@@ -85,12 +87,16 @@ button:focus-visible {
 
 .movie-image {
   flex-grow: 2;
-  height: 1px;
-  width: 150px;
+  height: 450px;
+  width: 300px;
 }
 
 .footer-button {
   height: 90px;
   border-radius: 10px;
   border-color: #646cff;
+}
+
+.sub-page-header {
+  align-self: flex-start;
 }
