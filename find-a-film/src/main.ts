@@ -1,5 +1,6 @@
 import './style.css';
-import { getMovieDetails, addMovie, showAllMovies, filterByGenre, searchInput } from "./apicall";
+import { getMovieDetails, addMovie, showAllMovies, filterMovies} from "./apicall";
+import {addReview} from "./reviews"
 const genreDropdown = document.querySelector<HTMLSelectElement>(".filter-by");
 const movieSearch = document.querySelector<HTMLInputElement>(".search");
 
@@ -36,11 +37,18 @@ const testMovie = {
   "description": "A skilled thief, who specializes in stealing secrets from deep within the subconscious, is offered a chance to have his past crimes forgiven if he can successfully plant an idea into someone's mind."
 };
 
+const testReview = {
+  "review": "Would defo see it again!",
+  "rating": "10",
+  "addedBy": "KarlC"
+}
+
+// addReview(testReview);
 // addMovie(testMovie);
 
 getMovieDetails(0);
 
 showAllMovies();
 
-genreDropdown?.addEventListener("change",filterByGenre);
-movieSearch?.addEventListener("input", searchInput);
+genreDropdown?.addEventListener("change",filterMovies);
+movieSearch?.addEventListener("input", filterMovies);
