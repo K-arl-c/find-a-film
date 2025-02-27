@@ -10,27 +10,55 @@
 
 <body>
   <div class="app-container">
-    <h1>Movie App</h1>
+    <div class="app-title-container">
+      <span class="app-title">Movie App </span>
+      <span class="app-title-tagline">Search for movies easily. Rate and review films. Explore new films.</span>
+    </div>
 
     <div class="header">
       <input class="search" type="text" placeholder="Search for a movie">
-      <label for="Filter">Filter by:</label>
-      <select name="Filter" class="filter-by">
-        <option value=""></option>
-        <option value="Genre">Genre</option>
-        <option value="Year">Release Year</option>
-      </select>
-      <input class="filter-input" type="text">
+      <div>
+        <label for="Filter">Filter by:</label>
+        <select name="Filter" class="filter-by">
+          <option value="Genre">Genre</option>
+          <option value="action">Action</option>
+          <option value="comedy">Comedy</option>
+          <option value="drama">Drama</option>
+          <option value="horror">Horror</option>
+          <option value="romance">Romance</option>
+          <option value="sc-fi">Sci-Fi</option>
+          <option value="fantasy">Fantasy</option>
+          <option value="thriller">Thriller</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="sort">Sort by:</label>
+        <select name="sort" class="sort-by">
+          <option value="release year">Release Year</option>
+          <option value="name ascending">Name Ascending</option>
+          <option value="name descending">Name Descending</option>
+        </select>
+      </div>
+
       <button type="button">Search</button>
     </div>
 
-    <div class="content"></div>
+    <div class="content">
+      <div class="movie-container">
+        <div class="movie-title">Elf</div>
+        <img class="movie-image"
+          src="https://m.media-amazon.com/images/M/MV5BNDQ0ZWE2NzgtNGNhMC00MDIwLWI1MjUtYjYxZGRiM2UyYTQzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+          alt="elf movie poster" width="50%" height="100%" />
+        <div>Genre: Comedy</div>
+        <div>Release Year: 2003</div>
+        <div>Rating: 7/10</div>
+      </div>
+    </div>
 
     <div class="footer"></div>
 
   </div>
-
-  <div id="app"></div>
   <script type="module" src="/src/main.ts"></script>
 </body>
 
