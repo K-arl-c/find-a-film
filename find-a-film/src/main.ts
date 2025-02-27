@@ -1,5 +1,6 @@
 import './style.css';
-import { getMovieDetails, addMovie, showAllMovies } from "./apicall";
+import { getMovieDetails, addMovie, showAllMovies, filterByGenre } from "./apicall";
+const genreDropdown = document.querySelector<HTMLSelectElement>(".filter-by");
 
 
 
@@ -36,6 +37,8 @@ const testMovie = {
 
 // addMovie(testMovie);
 
-// getMovieDetails(0);
+getMovieDetails(0);
 
 showAllMovies();
+
+genreDropdown?.addEventListener("change",filterByGenre);

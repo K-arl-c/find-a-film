@@ -3,7 +3,7 @@
 
 // Query Selectors
 const allMovieContainer = document.querySelector<HTMLDivElement>(".content");
-
+const genreDropdown = document.querySelector<HTMLSelectElement>(".filter-by");
 let savedMovies:any = null;
 
 const fetchMovies = async () =>{
@@ -34,6 +34,7 @@ export const getMovieDetails = async (i:any) =>{
     const movies = await fetchMovies();
     if(movies[i]){
         const movie = movies[i];
+        console.log("Movie ID:", movie.movieId);
         console.log("Movie Title:", movie.title);
         console.log("Movie Genre:", movie.genre);
         console.log("Release Year:", movie.releaseYear);
@@ -60,8 +61,7 @@ export const getRandomMovie = async () =>{
     }
 }
 
-// get details of all movies. TO DO - enhance this function with DOM manipulation to 
-// append a child div for every movie
+// get details of all movies
 export const showAllMovies = async () => {
     try{
         const movies = await fetchMovies();
@@ -143,3 +143,40 @@ export const addUser = async (userDetails: {
 }
 } 
 
+// // filtering using Genre 
+export const filterByGenre = async () =>{
+    try{
+        const selectedGenre = genreDropdown?.value.trim().toLowerCase();
+        const movies = await fetchMovies();
+        
+
+
+        allMovieContainer!.innerHTML=``;
+
+        if (selectedGenre === "genre"){
+            showAllMovies();
+            return;
+        }
+
+        const filteredMovies = movies.filter((movie:any) => movie.genre.toLowerCase() === selectedGenre);
+        
+        
+
+        filteredMovies.forEach((movie:any) => {
+        const movieDiv = document.createElement("div");
+        movieDiv.classList.add("movie-container");
+        movieDiv.innerHTML = `
+            <div class="movie-title">${movie.title}</div>
+            <img class="movie-image"
+            src="${movie.imageURL}"
+            alt="elf movie poster" width="50%" height="100%"/>
+            <div>Genre: ${movie.genre}</div>
+            <div>Release Year: ${movie.releaseYear}</div>
+            <div>Rating:</div>
+            `;
+            allMovieContainer!.appendChild(movieDiv);
+        });
+    } catch (error){
+        console.error("Error filtering movies by genre", error)
+    }
+};
