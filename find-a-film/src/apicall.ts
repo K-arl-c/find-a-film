@@ -4,6 +4,8 @@
 // Query Selectors
 const allMovieContainer = document.querySelector<HTMLDivElement>(".content");
 const genreDropdown = document.querySelector<HTMLSelectElement>(".filter-by");
+const movieSearch = document.querySelector<HTMLInputElement>(".search");
+
 let savedMovies:any = null;
 
 const fetchMovies = async () =>{
@@ -180,3 +182,32 @@ export const filterByGenre = async () =>{
         console.error("Error filtering movies by genre", error)
     }
 };
+
+// Search bar functionality 
+export const searchInput = async () =>{
+    try{
+        const searchTerm = movieSearch?.value.toLowerCase().trim();
+        const movies = await fetchMovies();
+
+        allMovieContainer!.innerHTML=``;
+
+        const filteredMovies = movies.filter((movie:any) => movie.title.toLowerCase().includes(searchTerm));
+
+        filteredMovies.forEach((movie:any) => {
+        const movieDiv = document.createElement("div");
+        movieDiv.classList.add("movie-container");
+        movieDiv.innerHTML = `
+            <div class="movie-title">${movie.title}</div>
+            <img class="movie-image"
+            src="${movie.imageURL}"
+            alt="elf movie poster" width="50%" height="100%"/>
+            <div>Genre: ${movie.genre}</div>
+            <div>Release Year: ${movie.releaseYear}</div>
+            <div>Rating:</div>
+            `;
+            allMovieContainer!.appendChild(movieDiv);
+        });
+    } catch (error){
+        console.error("There has been an error searching", error)
+    }
+}

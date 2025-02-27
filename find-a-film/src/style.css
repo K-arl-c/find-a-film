@@ -84,6 +84,8 @@ button:focus-visible {
 
 .movie-image {
   flex-grow: 2;
+  height: 450px;
+  width: 300px;
 }
 
 .footer-button {
