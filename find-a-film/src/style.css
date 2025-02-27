@@ -70,6 +70,7 @@ button:focus-visible {
 .content {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .movie-container {
@@ -84,6 +85,8 @@ button:focus-visible {
 
 .movie-image {
   flex-grow: 2;
+  height: 1px;
+  width: 150px;
 }
 
 .footer-button {
