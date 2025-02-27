@@ -12,7 +12,7 @@ const fetchMovies = async () =>{
     }
 
     try{
-    const response = await fetch ("http://localhost:8080/movies");
+    const response = await fetch ("http://localhost:8080/movies/add");
     if(!response.ok){
         throw new Error("Could not fetch API :(");
     }
@@ -57,6 +57,19 @@ export const getRandomMovie = async () =>{
         console.error("There has been an error", error);
     }
 }
+
+// get details of all movies. TO DO - enhance this function with DOM manipulation to 
+// append a child div for every movie
+export const showAllMovies = async () => {
+    try{
+        const movies = await fetchMovies();
+        movies.forEach((movie:any) => getMovieDetails(movie))
+    } catch (error){
+        console.error("Error retrieving all movies" ,error);
+    }
+    
+};
+
 
 
 
