@@ -5,7 +5,7 @@
 const allMovieContainer = document.querySelector<HTMLDivElement>(".content");
 const genreDropdown = document.querySelector<HTMLSelectElement>(".filter-by");
 const movieSearch = document.querySelector<HTMLInputElement>(".search");
-
+const randomButton = document.querySelector<HTMLButtonElement>("#randomButton");
 let savedMovies:any = null;
 
 const fetchMovies = async () =>{
@@ -52,16 +52,43 @@ export const getMovieDetails = async (i:any) =>{
     }
 };
 
+
+
+// // get movie details of 1 movie
+// export const getMovieDetails = async (i:any) =>{
+//     try{
+//     const movies = await fetchMovies();
+//     if(movies[i]){
+//         const movie = movies[i];
+//         console.log("Movie ID:", movie.id);
+//         console.log("Movie Title:", movie.title);
+//         console.log("Movie Genre:", movie.genre);
+//         console.log("Release Year:", movie.releaseYear);
+//         console.log("Rating:", movie.rating);
+//         console.log("Uploaded By:", movie.uploadedBy);
+//         console.log("Image URL:", movie.imageURL);
+//         console.log("Description:", movie.description);    
+//         } else{
+//             console.log("No Movie found")
+//         }
+//     } catch (error){
+//         console.error("There has been an error",error)
+//     }
+// };
+
 // get details of a random movie
 export const getRandomMovie = async () =>{
     try{
         const movies = await fetchMovies();
-        const randomIndex = Math.floor(Math.random()*movies.length)
-        getMovieDetails(randomIndex);
+        const moviesId = movies.length;
+        const randomID = Math.floor(Math.random()*moviesId)
+        window.location.href = `/src/review.html?id=${randomID}`;
     } catch(error){
         console.error("There has been an error", error);
     }
-}
+};
+
+
 
 // get details of all movies
 export const showAllMovies = async () => {
