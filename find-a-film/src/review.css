@@ -1,0 +1,65 @@
+.review-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.movie-container.review-content-container {
+    box-sizing: border-box;
+    width: 60%;
+    padding: 20px;
+}
+
+.new-review-container {
+    background-color: #333333;
+    padding: 20px;
+    border-radius: 12px;
+    border-color: #646cff;
+    border-style: double;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.new-review-container input,
+.new-review-container textarea,
+.new-review-container select {
+    background-color: #444444;
+    padding: 0.8em;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.new-review-container button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.previous-reviews-container {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    background-color: #333333;
+    padding: 15px;
+    border-radius: 12px;
+    border-color: rgba(100, 108, 255, 1);
+    border-style: double;
+}
+
+.previous-review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.user-review {
+    font-size: 1em;
+    margin-top: 10px;
+}
