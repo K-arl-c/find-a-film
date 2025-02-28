@@ -59,7 +59,7 @@ export const getRandomMovie = async () =>{
         const movies = await fetchMovies();
         const moviesId = movies.length;
         const randomID = Math.floor(Math.random()*moviesId)
-        window.location.href = `/src/review.html?id=${randomID}`;
+        window.location.href = `/find-a-film/src/review.html?id=${randomID}`;
     } catch(error){
         console.error("There has been an error", error);
     }
