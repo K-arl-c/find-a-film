@@ -92,21 +92,36 @@ input[type="submit"] {
 
 .movie-image {
   flex-grow: 2;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  width: 200px;
+  height: 300px;
+  object-fit: fill;
   margin: 20px;
+}
+
+.movie-link{
+  text-align: center;
+  color: white;
+  text-decoration: none;
+}
+
+.movie-link:visited{
+  color: #646cff;
 }
 
 .footer {
   position: sticky;
-  bottom: 0
+  bottom: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .footer-button {
   height: 90px;
   border-radius: 10px;
   border-color: #646cff;
+  color: white;
+  background-color: #4952ff;
+  margin-left: 15px;
 }
 
 .sub-page-header {

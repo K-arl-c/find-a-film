@@ -82,7 +82,7 @@ const showAllReviews = async () =>{
             reviewDiv.innerHTML = `
             <div class="review-header">
                 <span class="reviewed-by">Reviewed by: ${review.addedBy}</span>
-                <span class"user-rating">Rating: IN PROGRESS</span>
+                <span class"user-rating">Rating: ${review.rating}/10</span>
             </div>
             <div class="user-review">
                 ${review.review}

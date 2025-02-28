@@ -14,18 +14,30 @@
 <body>
     <div class="add-movie-container">
         <div class="sub-page-header">
-            <span class="sub-page-title">Movie App</span>
-            <button type="button">Home</button>
+            <span class="sub-page-title app-title">Movie App</span>
+            <a href="/"><button type="button">Home</button></a>
         </div>
         <form class="movie-container add-movie-form">
             <label for="title">Title:</label>
             <input type="text" name="title" id="title"><br>
 
             <label for="genre">Genre:</label>
-            <input type="text" name="genre" id="genre"><br>
+                    <select name="Filter" id="genre">
+                        <option value="Genre" disabled>Genre</option>
+                        <option value="Action">Action</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Sci-fi">Sci-Fi</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Thriller">Thriller</option>
+                    </select>
+            
+            <br>
 
             <label for="description">Description:</label>
-            <input type="text" name="description" id="description"><br>
+            <textarea type="text" name="description" id="description"></textarea><br>
 
             <label for="release-year">Release Year:</label>
             <input type="text" name="release-year" id="release"><br>

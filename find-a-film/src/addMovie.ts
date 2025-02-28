@@ -16,7 +16,7 @@ const addMovie = async (movieDetails:{
     title: string
 }) =>{
     try{
-        const response = await fetch ("http://localhost:8080/movies",{
+        const response = await fetch ("https://find-a-film-api-production.up.railway.app/movies",{
             method: "POST",
             headers:{
                 "Content-Type": "application/json",
@@ -26,7 +26,6 @@ const addMovie = async (movieDetails:{
         if(!response.ok){
             throw new Error("Failed to create new movie");
         }
-        console.log("Movie added!");
     } catch (error){
         console.error("There has been an error", error)
     }

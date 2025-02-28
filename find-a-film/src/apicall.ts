@@ -15,7 +15,7 @@ const fetchMovies = async () =>{
     }
 
     try{
-    const response = await fetch ("http://localhost:8080/movies");
+    const response = await fetch ("https://find-a-film-api-production.up.railway.app/movies");
     if(!response.ok){
         throw new Error("Could not fetch API :(");
     }
@@ -53,28 +53,6 @@ export const getMovieDetails = async (i:any) =>{
 
 
 
-// // get movie details of 1 movie
-// export const getMovieDetails = async (i:any) =>{
-//     try{
-//     const movies = await fetchMovies();
-//     if(movies[i]){
-//         const movie = movies[i];
-//         console.log("Movie ID:", movie.id);
-//         console.log("Movie Title:", movie.title);
-//         console.log("Movie Genre:", movie.genre);
-//         console.log("Release Year:", movie.releaseYear);
-//         console.log("Rating:", movie.rating);
-//         console.log("Uploaded By:", movie.uploadedBy);
-//         console.log("Image URL:", movie.imageURL);
-//         console.log("Description:", movie.description);    
-//         } else{
-//             console.log("No Movie found")
-//         }
-//     } catch (error){
-//         console.error("There has been an error",error)
-//     }
-// };
-
 // get details of a random movie
 export const getRandomMovie = async () =>{
     try{
@@ -93,7 +71,11 @@ export const getRandomMovie = async () =>{
 export const showAllMovies = async () => {
     try{
         const movies = await fetchMovies();
-        movies.forEach((movie:any) => {
+        movies.forEach(async(movie:any)=> {
+            const movieId = movie.id;
+            const response = await fetch (`https://find-a-film-api-production.up.railway.app/movies/${movieId}/average-rating`);
+            let ratingData = await response.json();
+            const rating = typeof ratingData ==='number' ? `${ratingData}/10` : "Not yet rated";
             const movieDiv = document.createElement("div");
             movieDiv.classList.add("movie-container");
             movieDiv.innerHTML = `
@@ -104,7 +86,7 @@ export const showAllMovies = async () => {
           alt="elf movie poster" width="50%" height="100%"/>
           <div>Genre: ${movie.genre}</div>
           <div>Release Year: ${movie.releaseYear}</div>
-          <div>Rating:</div>
+          <div>Rating: ${rating}</div>
           </a>
             `;
             allMovieContainer!.appendChild(movieDiv);
@@ -114,7 +96,22 @@ export const showAllMovies = async () => {
     }
 };
 
+// get rating
+export const getMovieRating = async () =>{
+    try{
+        const movies = await fetchMovies();
 
+        const movieId = movies.id;
+        const response = await fetch (`https://find-a-film-api-production.up.railway.app/movies/${movieId}/average-rating`);
+            if(!response.ok){
+        throw new Error("Could not fetch API :(");
+    }
+    const data = await response.json();
+    return data;
+    } catch (error){
+        console.error("Error retrieving all movies" ,error);
+}
+}
 
 
 
@@ -130,7 +127,7 @@ export const addMovie = async (movieDetails: {
     description: string,
     addedBy: string }) =>{
         try{
-            const response = await fetch ("http://localhost:8080/movies", {
+            const response = await fetch ("https://find-a-film-api-production.up.railway.app/movies", {
                 method: "POST",
                 headers:{
                     "Content-Type": "application/json",
@@ -155,7 +152,7 @@ export const addUser = async (userDetails: {
     lastName: string, 
     email: string, }) =>{
         try{
-            const response = await fetch ("http://localhost:8080/users", {
+            const response = await fetch ("https://find-a-film-api-production.up.railway.app/users", {
                 method: "POST",
                 headers:{
                     "Content-Type": "application/json",
@@ -171,73 +168,6 @@ export const addUser = async (userDetails: {
         console.error("There has been an error",error)
 }
 } 
-
-// // // filtering using Genre 
-// export const filterByGenre = async () =>{
-//     try{
-//         const selectedGenre = genreDropdown?.value.trim().toLowerCase();
-//         const movies = await fetchMovies();
-        
-
-
-//         allMovieContainer!.innerHTML=``;
-
-//         if (selectedGenre === "genre"){
-//             showAllMovies();
-//             return;
-//         }
-
-//         const filteredMovies = movies.filter((movie:any) => movie.genre.toLowerCase() === selectedGenre);
-        
-        
-
-//         filteredMovies.forEach((movie:any) => {
-//         const movieDiv = document.createElement("div");
-//         movieDiv.classList.add("movie-container");
-//         movieDiv.innerHTML = `
-//             <div class="movie-title">${movie.title}</div>
-//             <img class="movie-image"
-//             src="${movie.imageURL}"
-//             alt="elf movie poster" width="50%" height="100%"/>
-//             <div>Genre: ${movie.genre}</div>
-//             <div>Release Year: ${movie.releaseYear}</div>
-//             <div>Rating:</div>
-//             `;
-//             allMovieContainer!.appendChild(movieDiv);
-//         });
-//     } catch (error){
-//         console.error("Error filtering movies by genre", error)
-//     }
-// };
-
-// // Search bar functionality 
-// export const searchInput = async () =>{
-//     try{
-//         const searchTerm = movieSearch?.value.toLowerCase().trim();
-//         const movies = await fetchMovies();
-
-//         allMovieContainer!.innerHTML=``;
-
-//         const filteredMovies = movies.filter((movie:any) => movie.title.toLowerCase().includes(searchTerm));
-
-//         filteredMovies.forEach((movie:any) => {
-//         const movieDiv = document.createElement("div");
-//         movieDiv.classList.add("movie-container");
-//         movieDiv.innerHTML = `
-//             <div class="movie-title">${movie.title}</div>
-//             <img class="movie-image"
-//             src="${movie.imageURL}"
-//             alt="elf movie poster" width="50%" height="100%"/>
-//             <div>Genre: ${movie.genre}</div>
-//             <div>Release Year: ${movie.releaseYear}</div>
-//             <div>Rating:</div>
-//             `;
-//             allMovieContainer!.appendChild(movieDiv);
-//         });
-//     } catch (error){
-//         console.error("There has been an error searching", error)
-//     }
-// }
 
 
 
@@ -260,19 +190,23 @@ export const filterMovies = async () =>{
             filteredMovies = filteredMovies.filter((movie:any) => movie.title.toLowerCase().includes(searchTerm));
         }
 
-        filteredMovies.forEach((movie:any) => {
-        const movieDiv = document.createElement("div");
-        movieDiv.classList.add("movie-container");
-        movieDiv.innerHTML = `
+        filteredMovies.forEach(async(movie:any) => {
+            const movieId = movie.id;
+            const response = await fetch (`https://find-a-film-api-production.up.railway.app/movies/${movieId}/average-rating`);
+            let ratingData = await response.json();
+            const rating = typeof ratingData ==='number' ? `${ratingData}/10` : "Not yet rated";
+            const movieDiv = document.createElement("div");
+            movieDiv.classList.add("movie-container");
+            movieDiv.innerHTML = `
             <a href="src/review.html?id=${movie.id}" class="movie-link">
             <div class="movie-title">${movie.title}</div>
             <img class="movie-image"
-            src="${movie.imageURL}"
-            alt="elf movie poster" width="50%" height="100%"/>
-            <div>Genre: ${movie.genre}</div>
-            <div>Release Year: ${movie.releaseYear}</div>
-            <div>Rating:</div>
-            </a>
+          src="${movie.imageURL}"
+          alt="elf movie poster" width="50%" height="100%"/>
+          <div>Genre: ${movie.genre}</div>
+          <div>Release Year: ${movie.releaseYear}</div>
+          <div>Rating: ${rating}</div>
+          </a>
             `;
             allMovieContainer!.appendChild(movieDiv);
         });

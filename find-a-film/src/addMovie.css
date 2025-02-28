@@ -8,5 +8,17 @@
 
 .movie-container.add-movie-form {
     padding: 20px;
-    align-items: start;
+    align-items: center;
+}
+
+.movie-container input{
+    width: 200px;
+}
+
+#description{
+    height: 100px;
+    text-align: start;
+    vertical-align: top;
+    padding-top: 0;
+    padding-left: 0;
 }

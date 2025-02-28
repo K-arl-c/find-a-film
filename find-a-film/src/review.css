@@ -1,3 +1,6 @@
+#body{
+    justify-content: center;
+}
 .review-page-container {
     display: flex;
     flex-direction: column;
@@ -8,6 +11,12 @@
     box-sizing: border-box;
     width: 60%;
     padding: 20px;
+}
+
+.review-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .new-review-container {
@@ -50,6 +59,7 @@
     border-radius: 12px;
     border-color: rgba(100, 108, 255, 1);
     border-style: double;
+    width: 1000px;
 }
 
 .previous-review-header {
@@ -62,4 +72,19 @@
 .user-review {
     font-size: 1em;
     margin-top: 10px;
+}
+
+.all-reviews{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.film-description{
+    width: 85%;
+}
+
+#movie-container{
+    width: 300px;
+    height: 450px;
 }
