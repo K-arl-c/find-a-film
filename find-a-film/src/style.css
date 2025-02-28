@@ -74,12 +74,8 @@ input[type="submit"] {
 .content {
   display: flex;
   flex-wrap: wrap;
-<<<<<<< HEAD
   justify-content: space-between;
   align-content: space-between;
-=======
-  justify-content: center;
->>>>>>> karl
 }
 
 .movie-container {
@@ -96,7 +92,6 @@ input[type="submit"] {
 
 .movie-image {
   flex-grow: 2;
-<<<<<<< HEAD
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -106,10 +101,6 @@ input[type="submit"] {
 .footer {
   position: sticky;
   bottom: 0
-=======
-  height: 450px;
-  width: 300px;
->>>>>>> karl
 }
 
 .footer-button {
