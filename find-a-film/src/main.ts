@@ -1,5 +1,9 @@
 import './style.css';
-import { getMovieDetails, addMovie } from "./apicall";
+import { getMovieDetails, showAllMovies, filterMovies, getRandomMovie} from "./apicall";
+const genreDropdown = document.querySelector<HTMLSelectElement>(".filter-by");
+const movieSearch = document.querySelector<HTMLInputElement>(".search");
+const randomButton = document.querySelector<HTMLButtonElement>("#randomButton");
+
 
 
 // Function that does an api call to display all movies
@@ -33,7 +37,19 @@ const testMovie = {
   "description": "A skilled thief, who specializes in stealing secrets from deep within the subconscious, is offered a chance to have his past crimes forgiven if he can successfully plant an idea into someone's mind."
 };
 
+const testReview = {
+  "review": "Would defo see it again!",
+  "rating": "10",
+  "addedBy": "KarlC"
+}
+
+// addReview(testReview);
 // addMovie(testMovie);
 
-// getMovieDetails(0);
-import './style.css'
+getMovieDetails(0);
+
+showAllMovies();
+
+genreDropdown?.addEventListener("change",filterMovies);
+movieSearch?.addEventListener("input", filterMovies);
+randomButton?.addEventListener("click",getRandomMovie);
