@@ -4,7 +4,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: './index.html',  
+        base: './index.html',  
         addMovie: './addMovie.html',
         review: './src/review.html',
       }
