@@ -16,7 +16,7 @@ const movieId = urlParam.get("id");
 // get selected movie
 const fetchCurrentMovie = async () =>{
     try{
-    const response = await fetch (`http://localhost:8080/movies/${movieId}`);
+    const response = await fetch (`https://find-a-film-api-production.up.railway.app/movies/${movieId}`);
     if(!response.ok){
         throw new Error("Could not fetch API :(");
     }
@@ -54,7 +54,7 @@ export const addReview = async (userDetails: {
     review: string, 
     }) =>{
         try{
-            const response = await fetch (`http://localhost:8080/reviews/${movieId}`, {
+            const response = await fetch (`https://find-a-film-api-production.up.railway.app/reviews/${movieId}`, {
                 method: "POST",
                 headers:{
                     "Content-Type": "application/json",
